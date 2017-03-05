@@ -68,7 +68,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("ArrayOverflowError", resourceCulture)
             End Get
         End Property
-
+        
         '''<summary>
         '''  Looks up a localized string similar to No elements to delete!.
         '''</summary>
@@ -77,7 +77,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("ArrayUnderflowError", resourceCulture)
             End Get
         End Property
-
+        
         '''<summary>
         '''  Looks up a localized string similar to What do you want to edit?.
         '''</summary>
@@ -86,7 +86,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("ChooseDataToEditPrompt", resourceCulture)
             End Get
         End Property
-
+        
         '''<summary>
         '''  Looks up a localized string similar to What do you want to delete?.
         '''</summary>
@@ -95,7 +95,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("ChooseDateToDeletePrompt", resourceCulture)
             End Get
         End Property
-
+        
         '''<summary>
         '''  Looks up a localized string similar to Edit now:.
         '''</summary>
@@ -104,7 +104,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("ChooseNewValuePrompt", resourceCulture)
             End Get
         End Property
-
+        
         '''<summary>
         '''  Looks up a localized string similar to Data does not exist!.
         '''</summary>
@@ -113,13 +113,40 @@ Namespace My.Resources
                 Return ResourceManager.GetString("DataNonExistentError", resourceCulture)
             End Get
         End Property
-
+        
         '''<summary>
         '''  Looks up a localized string similar to Enter new data:.
         '''</summary>
         Friend ReadOnly Property EnterNewDataPrompt() As String
             Get
                 Return ResourceManager.GetString("EnterNewDataPrompt", resourceCulture)
+            End Get
+        End Property
+
+        '''<summary>
+        '''  Looks up a localized string similar to Where do you want to add it?.
+        '''</summary>
+        Friend ReadOnly Property InsertLocationPrompt() As String
+            Get
+                Return ResourceManager.GetString("InsertLocationPrompt", resourceCulture)
+            End Get
+        End Property
+
+        '''<summary>
+        '''  Looks up a localized string similar to The position must be between 0 and {0}.
+        '''</summary>
+        Friend ReadOnly Property InvalidIndexError() As String
+            Get
+                Return ResourceManager.GetString("InvalidIndexError", resourceCulture)
+            End Get
+        End Property
+
+        '''<summary>
+        '''  Looks up a localized string similar to The position must be a valid number!.
+        '''</summary>
+        Friend ReadOnly Property InvalidNumberError() As String
+            Get
+                Return ResourceManager.GetString("InvalidNumberError", resourceCulture)
             End Get
         End Property
     End Module

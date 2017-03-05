@@ -138,4 +138,13 @@
   <data name="EnterNewDataPrompt" xml:space="preserve">
     <value>Enter new data:</value>
   </data>
+  <data name="InsertLocationPrompt" xml:space="preserve">
+    <value>Where do you want to add it?</value>
+  </data>
+  <data name="InvalidIndexError" xml:space="preserve">
+    <value>The position must be between 0 and {0}</value>
+  </data>
+  <data name="InvalidNumberError" xml:space="preserve">
+    <value>The position must be a valid number!</value>
+  </data>
 </root>

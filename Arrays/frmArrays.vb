@@ -50,7 +50,40 @@
     End Sub
 
     Private Sub Insert()
-
+        Dim inputPos As String
+        Dim pos As Integer
+        Dim newItem As String
+        Dim curMaxIndex As Integer
+        If lastValIndex < maxIndex Then
+            newItem = InputBox(My.Resources.EnterNewDataPrompt)
+            If Not String.IsNullOrWhiteSpace(newItem) Then
+                ' User pressed OK and string is not empty or whitespace
+                inputPos = InputBox(My.Resources.InsertLocationPrompt)
+                If Not String.IsNullOrWhiteSpace(inputPos) Then
+                    If Integer.TryParse(inputPos, pos) Then
+                        ' User pressed OK and entered a valid number
+                        curMaxIndex = Math.Min(maxIndex, lastValIndex + 1)
+                        If pos >= 0 And pos <= curMaxIndex Then
+                            ' Insert anywhere between 0 and the space after the current highest index
+                            For i As Integer = lastValIndex + 1 To pos + 1 Step -1
+                                ' Don't assign the object - just the value
+                                letters(i).Value = letters(i - 1).Value
+                            Next
+                            ' Insert value once existing values have shuffled up
+                            letters(pos).Value = newItem
+                            lastValIndex = lastValIndex + 1
+                            DisplayArray()
+                        Else
+                            MsgBox(String.Format(My.Resources.InvalidIndexError, Str(curMaxIndex)))
+                        End If
+                    Else
+                        MsgBox(My.Resources.InvalidNumberError)
+                    End If
+                End If
+            End If
+        Else
+            MsgBox(My.Resources.ArrayOverflowError)
+        End If
     End Sub
 
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
