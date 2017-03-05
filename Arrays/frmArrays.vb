@@ -86,7 +86,18 @@
     End Sub
 
     Private Sub Append()
-
+        Dim strInput As String
+        If lastValIndex < maxIndex Then
+            strInput = InputBox("Enter new data:")
+            If Not String.IsNullOrWhiteSpace(strInput) Then
+                'User pressed OK and string is not empty or whitespace
+                lastValIndex = lastValIndex + 1
+                letters(lastValIndex).Value = strInput
+            End If
+            DisplayArray()
+        Else
+            MsgBox("Insufficient space!")
+        End If
     End Sub
 
     Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
