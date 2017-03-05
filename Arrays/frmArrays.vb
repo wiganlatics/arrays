@@ -38,7 +38,7 @@
     End Sub
 
     Private Sub DisplayArray()
-        dvgView.DataSource = letters
+        dgvView.DataSource = letters
     End Sub
 
     Private Sub btnInsert_Click(sender As Object, e As EventArgs) Handles btnInsert.Click

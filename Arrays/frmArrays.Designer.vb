@@ -35,9 +35,9 @@ Partial Class frmArrays
         Me.ResetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.dvgView = New System.Windows.Forms.DataGridView()
+        Me.dgvView = New System.Windows.Forms.DataGridView()
         Me.MenuStrip1.SuspendLayout()
-        CType(Me.dvgView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnInsert
@@ -134,14 +134,14 @@ Partial Class frmArrays
         Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(137, 26)
         Me.ExitToolStripMenuItem.Text = "E&xit"
         '
-        'dvgView
+        'dgvView
         '
-        Me.dvgView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dvgView.Location = New System.Drawing.Point(8, 36)
-        Me.dvgView.Name = "dvgView"
-        Me.dvgView.RowTemplate.Height = 24
-        Me.dvgView.Size = New System.Drawing.Size(482, 326)
-        Me.dvgView.TabIndex = 5
+        Me.dgvView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvView.Location = New System.Drawing.Point(8, 36)
+        Me.dgvView.Name = "dgvView"
+        Me.dgvView.RowTemplate.Height = 24
+        Me.dgvView.Size = New System.Drawing.Size(482, 326)
+        Me.dgvView.TabIndex = 5
         '
         'frmArrays
         '
@@ -149,7 +149,7 @@ Partial Class frmArrays
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.MenuHighlight
         Me.ClientSize = New System.Drawing.Size(612, 371)
-        Me.Controls.Add(Me.dvgView)
+        Me.Controls.Add(Me.dgvView)
         Me.Controls.Add(Me.btnAppend)
         Me.Controls.Add(Me.btnDelete)
         Me.Controls.Add(Me.btnEdit)
@@ -162,7 +162,7 @@ Partial Class frmArrays
         Me.Text = "Array Handling"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
-        CType(Me.dvgView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -180,6 +180,6 @@ Partial Class frmArrays
     Friend WithEvents ResetToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ExitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents dvgView As System.Windows.Forms.DataGridView
+    Friend WithEvents dgvView As System.Windows.Forms.DataGridView
 
 End Class
