@@ -70,6 +70,33 @@ Namespace My.Resources
         End Property
 
         '''<summary>
+        '''  Looks up a localized string similar to What do you want to edit?.
+        '''</summary>
+        Friend ReadOnly Property ChooseDataToEditPrompt() As String
+            Get
+                Return ResourceManager.GetString("ChooseDataToEditPrompt", resourceCulture)
+            End Get
+        End Property
+
+        '''<summary>
+        '''  Looks up a localized string similar to Edit now:.
+        '''</summary>
+        Friend ReadOnly Property ChooseNewValuePrompt() As String
+            Get
+                Return ResourceManager.GetString("ChooseNewValuePrompt", resourceCulture)
+            End Get
+        End Property
+
+        '''<summary>
+        '''  Looks up a localized string similar to Data does not exist!.
+        '''</summary>
+        Friend ReadOnly Property DataNonExistentError() As String
+            Get
+                Return ResourceManager.GetString("DataNonExistentError", resourceCulture)
+            End Get
+        End Property
+
+        '''<summary>
         '''  Looks up a localized string similar to Enter new data:.
         '''</summary>
         Friend ReadOnly Property EnterNewDataPrompt() As String

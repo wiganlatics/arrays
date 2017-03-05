@@ -62,7 +62,24 @@
     End Sub
 
     Private Sub Edit()
-
+        Dim searchitem As String
+        Dim strInput As String
+        Dim pos As Integer
+        searchitem = InputBox(My.Resources.ChooseDataToEditPrompt)
+        If Not String.IsNullOrWhiteSpace(searchitem) Then
+            'User pressed OK and string is not empty or white space
+            pos = Search(searchitem)
+            If pos = -1 Then
+                MsgBox(My.Resources.DataNonExistentError)
+            Else
+                strInput = InputBox(My.Resources.EnterNewDataPrompt)
+                If Not String.IsNullOrWhiteSpace(strInput) Then
+                    'User pressed OK and string is not empty or whitespace
+                    letters(pos).Value = strInput
+                    DisplayArray()
+                End If
+            End If
+        End If
     End Sub
 
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
@@ -105,6 +122,18 @@
     End Sub
 
     Public Function Search(searchitem As String) As Integer
-        Search = 0
+        Dim found As Boolean = False
+        Dim pos As Integer = 0
+        Do While Not found And pos <= lastValIndex
+            If letters(pos).Value = searchitem Then
+                found = True
+            Else
+                pos = pos + 1
+            End If
+        Loop
+        If Not found Then
+            pos = -1
+        End If
+        Search = pos
     End Function
 End Class

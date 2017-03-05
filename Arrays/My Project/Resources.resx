@@ -120,6 +120,15 @@
   <data name="ArrayOverflowError" xml:space="preserve">
     <value>Insufficient space!</value>
   </data>
+  <data name="ChooseDataToEditPrompt" xml:space="preserve">
+    <value>What do you want to edit?</value>
+  </data>
+  <data name="ChooseNewValuePrompt" xml:space="preserve">
+    <value>Edit now:</value>
+  </data>
+  <data name="DataNonExistentError" xml:space="preserve">
+    <value>Data does not exist!</value>
+  </data>
   <data name="EnterNewDataPrompt" xml:space="preserve">
     <value>Enter new data:</value>
   </data>
