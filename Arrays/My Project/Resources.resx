@@ -120,8 +120,14 @@
   <data name="ArrayOverflowError" xml:space="preserve">
     <value>Insufficient space!</value>
   </data>
+  <data name="ArrayUnderflowError" xml:space="preserve">
+    <value>No elements to delete!</value>
+  </data>
   <data name="ChooseDataToEditPrompt" xml:space="preserve">
     <value>What do you want to edit?</value>
+  </data>
+  <data name="ChooseDateToDeletePrompt" xml:space="preserve">
+    <value>What do you want to delete?</value>
   </data>
   <data name="ChooseNewValuePrompt" xml:space="preserve">
     <value>Edit now:</value>

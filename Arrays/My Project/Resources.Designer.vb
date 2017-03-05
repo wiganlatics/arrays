@@ -70,11 +70,29 @@ Namespace My.Resources
         End Property
 
         '''<summary>
+        '''  Looks up a localized string similar to No elements to delete!.
+        '''</summary>
+        Friend ReadOnly Property ArrayUnderflowError() As String
+            Get
+                Return ResourceManager.GetString("ArrayUnderflowError", resourceCulture)
+            End Get
+        End Property
+
+        '''<summary>
         '''  Looks up a localized string similar to What do you want to edit?.
         '''</summary>
         Friend ReadOnly Property ChooseDataToEditPrompt() As String
             Get
                 Return ResourceManager.GetString("ChooseDataToEditPrompt", resourceCulture)
+            End Get
+        End Property
+
+        '''<summary>
+        '''  Looks up a localized string similar to What do you want to delete?.
+        '''</summary>
+        Friend ReadOnly Property ChooseDateToDeletePrompt() As String
+            Get
+                Return ResourceManager.GetString("ChooseDateToDeletePrompt", resourceCulture)
             End Get
         End Property
 

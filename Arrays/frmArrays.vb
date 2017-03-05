@@ -91,7 +91,31 @@
     End Sub
 
     Private Sub Delete()
-
+        Dim searchitem As String
+        Dim pos As Integer
+        If lastValIndex > -1 Then
+            searchitem = InputBox(My.Resources.ChooseDateToDeletePrompt)
+            If Not String.IsNullOrWhiteSpace(searchitem) Then
+                ' User pressed OK and string is not empty or white space
+                pos = Search(searchitem)
+                If pos = -1 Then
+                    MsgBox(My.Resources.DataNonExistentError)
+                Else
+                    For i As Integer = pos To lastValIndex - 1
+                        ' Don't assign the object - just the value
+                        letters(i).Value = letters(i + 1).Value
+                    Next
+                    ' Set last item to blank - can't set this in the loop since
+                    ' if array was full there would be no next element to copy
+                    ' and this would cause an index out of bounds error
+                    letters(lastValIndex).Value = String.Empty
+                    lastValIndex = lastValIndex - 1
+                    DisplayArray()
+                End If
+            End If
+        Else
+            MsgBox(My.Resources.ArrayUnderflowError)
+        End If
     End Sub
 
     Private Sub btnAppend_Click(sender As Object, e As EventArgs) Handles btnAppend.Click
