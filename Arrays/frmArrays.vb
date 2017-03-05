@@ -88,7 +88,7 @@
     Private Sub Append()
         Dim strInput As String
         If lastValIndex < maxIndex Then
-            strInput = InputBox("Enter new data:")
+            strInput = InputBox(My.Resources.EnterNewDataPrompt)
             If Not String.IsNullOrWhiteSpace(strInput) Then
                 'User pressed OK and string is not empty or whitespace
                 lastValIndex = lastValIndex + 1
@@ -96,7 +96,7 @@
             End If
             DisplayArray()
         Else
-            MsgBox("Insufficient space!")
+            MsgBox(My.Resources.ArrayOverflowError)
         End If
     End Sub
 
