@@ -1,5 +1,5 @@
 ﻿Public Class DataValue
-    'Private property
+    ' Private field
     Private _value As String
 
     ' Public property
