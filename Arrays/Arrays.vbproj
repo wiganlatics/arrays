@@ -70,6 +70,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Array.vb" />
     <Compile Include="DataValue.vb" />
     <Compile Include="frmArrays.vb">
       <SubType>Form</SubType>

@@ -1,14 +1,8 @@
 ﻿Public Class frmArrays
     Const maxIndex As Integer = 9
-    Dim letters(maxIndex) As DataValue
-    Dim lastValIndex As Integer
+    Dim array As Array = New Array(maxIndex)
 
     Private Sub frmArrays_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Initialise objects
-        For i As Integer = 0 To maxIndex
-            letters(i) = New DataValue(String.Empty)
-        Next
-
         Reset()
     End Sub
 
@@ -17,28 +11,20 @@
     End Sub
 
     Private Sub Reset()
-        EmptyArray()
+        array.EmptyArray()
         SetupArray()
         DisplayArray()
     End Sub
 
-    Private Sub EmptyArray()
-        For i As Integer = 0 To maxIndex
-            letters(i).Value = String.Empty
-        Next
-        lastValIndex = -1
-    End Sub
-
     Private Sub SetupArray()
-        letters(0).Value = "D"
-        letters(1).Value = "K"
-        letters(2).Value = "Q"
-        letters(3).Value = "V"
-        lastValIndex = 3
+        array.Append("D")
+        array.Append("K")
+        array.Append("Q")
+        array.Append("V")
     End Sub
 
     Private Sub DisplayArray()
-        dgvView.DataSource = letters
+        dgvView.DataSource = array.Items
     End Sub
 
     Private Sub btnInsert_Click(sender As Object, e As EventArgs) Handles btnInsert.Click
@@ -53,37 +39,24 @@
         Dim inputPos As String
         Dim pos As Integer
         Dim newItem As String
-        Dim curMaxIndex As Integer
-        If lastValIndex < maxIndex Then
+        Try
             newItem = InputBox(My.Resources.EnterNewDataPrompt)
             If Not String.IsNullOrWhiteSpace(newItem) Then
-                ' User pressed OK and string is not empty or whitespace
+                ' User pressed OK and string is not empty or white space
                 inputPos = InputBox(My.Resources.InsertLocationPrompt)
                 If Not String.IsNullOrWhiteSpace(inputPos) Then
                     If Integer.TryParse(inputPos, pos) Then
                         ' User pressed OK and entered a valid number
-                        curMaxIndex = Math.Min(maxIndex, lastValIndex + 1)
-                        If pos >= 0 And pos <= curMaxIndex Then
-                            ' Insert anywhere between 0 and the space after the current highest index
-                            For i As Integer = lastValIndex + 1 To pos + 1 Step -1
-                                ' Don't assign the object - just the value
-                                letters(i).Value = letters(i - 1).Value
-                            Next
-                            ' Insert value once existing values have shuffled up
-                            letters(pos).Value = newItem
-                            lastValIndex = lastValIndex + 1
-                            DisplayArray()
-                        Else
-                            MsgBox(String.Format(My.Resources.InvalidIndexError, Str(curMaxIndex)))
-                        End If
+                        array.Insert(newItem, pos)
+                        DisplayArray()
                     Else
                         MsgBox(My.Resources.InvalidNumberError)
                     End If
                 End If
             End If
-        Else
-            MsgBox(My.Resources.ArrayOverflowError)
-        End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
@@ -95,24 +68,19 @@
     End Sub
 
     Private Sub Edit()
-        Dim searchitem As String
-        Dim strInput As String
-        Dim pos As Integer
-        searchitem = InputBox(My.Resources.ChooseDataToEditPrompt)
-        If Not String.IsNullOrWhiteSpace(searchitem) Then
-            'User pressed OK and string is not empty or white space
-            pos = Search(searchitem)
-            If pos = -1 Then
-                MsgBox(My.Resources.DataNonExistentError)
-            Else
-                strInput = InputBox(My.Resources.EnterNewDataPrompt)
-                If Not String.IsNullOrWhiteSpace(strInput) Then
-                    'User pressed OK and string is not empty or whitespace
-                    letters(pos).Value = strInput
-                    DisplayArray()
-                End If
+        Dim searchItem As String
+        Dim newItem As String
+        Try
+            searchItem = InputBox(My.Resources.ChooseDataToEditPrompt)
+            If Not String.IsNullOrWhiteSpace(searchItem) Then
+                ' User pressed OK and string is not empty or white space
+                newItem = InputBox(My.Resources.EnterNewDataPrompt)
+                array.Edit(searchItem, newItem)
+                DisplayArray()
             End If
-        End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
@@ -124,31 +92,12 @@
     End Sub
 
     Private Sub Delete()
-        Dim searchitem As String
-        Dim pos As Integer
-        If lastValIndex > -1 Then
-            searchitem = InputBox(My.Resources.ChooseDateToDeletePrompt)
-            If Not String.IsNullOrWhiteSpace(searchitem) Then
-                ' User pressed OK and string is not empty or white space
-                pos = Search(searchitem)
-                If pos = -1 Then
-                    MsgBox(My.Resources.DataNonExistentError)
-                Else
-                    For i As Integer = pos To lastValIndex - 1
-                        ' Don't assign the object - just the value
-                        letters(i).Value = letters(i + 1).Value
-                    Next
-                    ' Set last item to blank - can't set this in the loop since
-                    ' if array was full there would be no next element to copy
-                    ' and this would cause an index out of bounds error
-                    letters(lastValIndex).Value = String.Empty
-                    lastValIndex = lastValIndex - 1
-                    DisplayArray()
-                End If
-            End If
-        Else
-            MsgBox(My.Resources.ArrayUnderflowError)
-        End If
+        Try
+            array.Delete(InputBox(My.Resources.ChooseDateToDeletePrompt))
+            DisplayArray()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 
     Private Sub btnAppend_Click(sender As Object, e As EventArgs) Handles btnAppend.Click
@@ -160,37 +109,15 @@
     End Sub
 
     Private Sub Append()
-        Dim strInput As String
-        If lastValIndex < maxIndex Then
-            strInput = InputBox(My.Resources.EnterNewDataPrompt)
-            If Not String.IsNullOrWhiteSpace(strInput) Then
-                'User pressed OK and string is not empty or whitespace
-                lastValIndex = lastValIndex + 1
-                letters(lastValIndex).Value = strInput
-            End If
+        Try
+            array.Append(InputBox(My.Resources.EnterNewDataPrompt))
             DisplayArray()
-        Else
-            MsgBox(My.Resources.ArrayOverflowError)
-        End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 
     Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
         Me.Close()
     End Sub
-
-    Public Function Search(searchitem As String) As Integer
-        Dim found As Boolean = False
-        Dim pos As Integer = 0
-        Do While Not found And pos <= lastValIndex
-            If letters(pos).Value = searchitem Then
-                found = True
-            Else
-                pos = pos + 1
-            End If
-        Loop
-        If Not found Then
-            pos = -1
-        End If
-        Search = pos
-    End Function
 End Class
