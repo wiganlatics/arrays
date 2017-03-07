@@ -18,15 +18,16 @@
 
         ' Initialise array
         _items = New DataValue(maxIndex) {}
-        For i As Integer = 0 To maxIndex
-            _items(i) = New DataValue(String.Empty)
-        Next
-        lastValIndex = -1
+        EmptyArray()
     End Sub
 
     Public Sub EmptyArray()
         For i As Integer = 0 To maxIndex
-            _items(i).Value = String.Empty
+            If _items(i) IsNot Nothing Then
+                _items(i).Value = String.Empty
+            Else
+                _items(i) = New DataValue(String.Empty)
+            End If
         Next
         lastValIndex = -1
     End Sub
