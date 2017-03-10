@@ -33,7 +33,7 @@ Imports Microsoft.VisualStudio.TestTools.UnitTesting
     End Sub
 
     ''' <summary>
-    ''' Tests that appending to a full array will throw an exception
+    ''' Test that appending to a full array will throw an exception
     ''' </summary>
     <TestMethod()> Public Sub AppendToFullArrayThrowsException()
         Const maxIndex As Integer = 3
