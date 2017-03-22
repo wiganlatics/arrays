@@ -57,7 +57,7 @@ Imports Microsoft.VisualStudio.TestTools.UnitTesting
             array.Append("E")
             Assert.Fail("Expected an overflow exception")
         Catch ex As Exception
-            Assert.AreEqual(ex.Message, "Insufficient space!", "Exception thrown witrh an unexpected message.")
+            Assert.AreEqual(ex.Message, "Insufficient space!", "Exception thrown with an unexpected message.")
         End Try
     End Sub
 
