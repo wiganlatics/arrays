@@ -80,7 +80,7 @@ Imports Microsoft.VisualStudio.TestTools.UnitTesting
     End Sub
 
     ''' <summary>
-    ''' Test Helper for Append blank values.
+    ''' Test Helper for AppendBlankDataIgnored test.
     ''' </summary>
     ''' <param name="elementOne">Element to append.</param>
     Private Sub AppendBlankTestHelper(elementOne As String)
